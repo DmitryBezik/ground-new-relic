@@ -70,22 +70,6 @@ final class Adaptive implements NewRelicInterface
     /**
      * {@inheritDoc}
      */
-    public function getBrowserTimingHeader(bool $includeTags = true): string
-    {
-        return $this->newRelic->getBrowserTimingHeader($includeTags);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getBrowserTimingFooter(bool $includeTags = true): string
-    {
-        return $this->newRelic->getBrowserTimingFooter($includeTags);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function disableAutoRUM(): void
     {
         $this->newRelic->disableAutoRUM();
@@ -182,13 +166,5 @@ final class Adaptive implements NewRelicInterface
     public function recordDataStoreSegment(callable $func, array $parameters)
     {
         $this->newRelic->recordDatastoreSegment($func, $parameters);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUserAttributes(string $userValue, string $accountValue, string $productValue): bool
-    {
-        return $this->newRelic->setUserAttributes($userValue, $accountValue, $productValue);
     }
 }

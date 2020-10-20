@@ -57,22 +57,6 @@ final class BlackHole implements NewRelicInterface
     /**
      * {@inheritDoc}
      */
-    public function getBrowserTimingHeader(bool $includeTags = true): string
-    {
-        return '';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getBrowserTimingFooter(bool $includeTags = true): string
-    {
-        return '';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function disableAutoRUM(): void
     {
     }
@@ -160,13 +144,5 @@ final class BlackHole implements NewRelicInterface
      */
     public function recordDataStoreSegment(callable $func, array $parameters)
     {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUserAttributes(string $userValue, string $accountValue, string $productValue): bool
-    {
-        return true;
     }
 }

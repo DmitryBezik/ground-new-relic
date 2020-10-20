@@ -60,25 +60,7 @@ interface NewRelicInterface
     public function addCustomParameter(string $name, $value): bool;
 
     /**
-     * Returns a New Relic Browser snippet to inject in the head of your HTML output
-     * {@link https://docs.newrelic.com/docs/agents/php-agent/php-agent-api/newrelic_get_browser_timing_header}
-     *
-     * @param bool $includeTags
-     * @return string
-     */
-    public function getBrowserTimingHeader(bool $includeTags = true): string;
-
-    /**
-     * {@link https://docs.newrelic.com/docs/agents/php-agent/php-agent-api/newrelic_get_browser_timing_footer}
-     *
-     * @param bool $includeTags
-     * @return string
-     */
-    public function getBrowserTimingFooter(bool $includeTags = true): string;
-
-    /**
      * Disable automatic injection of the New Relic Browser snippet on particular pages.
-     *
      * {@link https://docs.newrelic.com/docs/agents/php-agent/php-agent-api/newrelic_disable_autorum}
      */
     public function disableAutoRUM(): void;
@@ -169,16 +151,7 @@ interface NewRelicInterface
      *
      * @param callable $func
      * @param string[] $parameters
+     * @return mixed
      */
     public function recordDataStoreSegment(callable $func, array $parameters);
-
-    /**
-     * {@link https://docs.newrelic.com/docs/agents/php-agent/php-agent-api/newrelic_set_user_attributes}
-     *
-     * @param string $userValue
-     * @param string $accountValue
-     * @param string $productValue
-     * @return bool
-     */
-    public function setUserAttributes(string $userValue, string $accountValue, string $productValue): bool;
 }

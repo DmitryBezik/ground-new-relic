@@ -7,6 +7,20 @@ namespace Ground\NewRelic;
 use Throwable;
 
 use function ini_get;
+use function newrelic_add_custom_parameter;
+use function newrelic_add_custom_tracer;
+use function newrelic_background_job;
+use function newrelic_capture_params;
+use function newrelic_custom_metric;
+use function newrelic_disable_autorum;
+use function newrelic_end_transaction;
+use function newrelic_ignore_apdex;
+use function newrelic_ignore_transaction;
+use function newrelic_name_transaction;
+use function newrelic_notice_error;
+use function newrelic_record_custom_event;
+use function newrelic_record_datastore_segment;
+use function newrelic_set_appname;
 
 final class NewRelic implements NewRelicInterface
 {
@@ -56,22 +70,6 @@ final class NewRelic implements NewRelicInterface
     public function addCustomParameter(string $name, $value): bool
     {
         return newrelic_add_custom_parameter($name, $value);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getBrowserTimingHeader(bool $includeTags = true): string
-    {
-        return newrelic_get_browser_timing_header($includeTags);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getBrowserTimingFooter(bool $includeTags = true): string
-    {
-        return newrelic_get_browser_timing_footer($includeTags);
     }
 
     /**
@@ -175,14 +173,6 @@ final class NewRelic implements NewRelicInterface
      */
     public function recordDataStoreSegment(callable $func, array $parameters)
     {
-        newrelic_record_datastore_segment($func, $parameters);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUserAttributes(string $userValue, string $accountValue, string $productValue): bool
-    {
-        return newrelic_set_user_attributes($userValue, $accountValue, $productValue);
+        return newrelic_record_datastore_segment($func, $parameters);
     }
 }

@@ -94,26 +94,6 @@ final class LoggingDecorator implements NewRelicInterface
     /**
      * {@inheritDoc}
      */
-    public function getBrowserTimingHeader(bool $includeTags = true): string
-    {
-        $this->logger->debug('Getting New Relic RUM timing header');
-
-        return $this->newRelic->getBrowserTimingHeader($includeTags);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getBrowserTimingFooter(bool $includeTags = true): string
-    {
-        $this->logger->debug('Getting New Relic RUM timing footer');
-
-        return $this->newRelic->getBrowserTimingFooter($includeTags);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function disableAutoRUM(): void
     {
         $this->logger->debug('Disabling New Relic Auto-RUM');
@@ -245,19 +225,5 @@ final class LoggingDecorator implements NewRelicInterface
         ]);
 
         $this->newRelic->recordDatastoreSegment($func, $parameters);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUserAttributes(string $userValue, string $accountValue, string $productValue): bool
-    {
-        $this->logger->debug('Setting New Relic user attributes', [
-            'user_value' => $userValue,
-            'account_value' => $accountValue,
-            'product_value' => $productValue,
-        ]);
-
-        return $this->newRelic->setUserAttributes($userValue, $accountValue, $productValue);
     }
 }
