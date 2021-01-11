@@ -224,6 +224,6 @@ final class LoggingDecorator implements NewRelicInterface
             'parameters' => $parameters,
         ]);
 
-        $this->newRelic->recordDatastoreSegment($func, $parameters);
+        $this->newRelic->recordDataStoreSegment($func, $parameters);
     }
 }
